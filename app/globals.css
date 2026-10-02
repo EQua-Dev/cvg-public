@@ -1,0 +1,45 @@
+/* The Board: public, light, calm. Orange is an accent. */
+:root {
+  --ink: #0e1a16;
+  --paper: #f4f5ef;
+  --orange: #e8622a;
+  --teal: #2a8c99;
+  --slate: #59685f;
+  --mist: #d8dbce;
+  --haze: #eaece3;
+  --good: #2f9e6b;
+  --good-bg: #e4f0e9;
+  --alert: #c8463d;
+  --alert-bg: #f5e5e5;
+  --font: "Archivo", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.45 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+
+.wrap { max-width: 520px; margin: 0 auto; min-height: 100dvh; padding: 0 16px 48px; display: flex; flex-direction: column; }
+.top { display: flex; align-items: center; gap: 8px; height: 60px; border-bottom: 1px solid var(--mist); margin-bottom: 28px; }
+.brand { font: 800 18px var(--font); letter-spacing: 0.04em; text-decoration: none; }
+.brand-mark { color: var(--orange); }
+.label { font: 600 12px var(--font); letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate); }
+.h1 { font: 900 34px/1.02 var(--font); letter-spacing: -0.02em; margin: 0; text-transform: uppercase; }
+.muted { color: var(--slate); }
+.mono { font-family: var(--mono); }
+
+.verdict { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-radius: 6px; font: 800 20px var(--font); }
+.verdict-good { background: var(--good-bg); color: #1d6b47; }
+.verdict-bad { background: var(--alert-bg); color: #8f2f28; }
+.verdict .icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; flex-shrink: 0; }
+.verdict-good .icon { background: var(--good); }
+.verdict-bad .icon { background: var(--alert); }
+
+.person { display: flex; gap: 18px; align-items: center; background: #fff; border: 1px solid var(--mist); border-radius: 6px; padding: 18px; margin-top: 16px; }
+.photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; background: var(--haze); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font: 600 28px var(--mono); color: var(--slate); }
+.name { font: 800 22px/1.15 var(--font); margin: 0 0 4px; }
+.facts { background: #fff; border: 1px solid var(--mist); border-radius: 6px; margin-top: 12px; }
+.fact { display: flex; justify-content: space-between; padding: 13px 18px; border-bottom: 1px solid var(--haze); }
+.fact:last-child { border-bottom: none; }
+.foot { margin-top: auto; padding-top: 32px; font-size: 13px; color: var(--slate); text-align: center; }
