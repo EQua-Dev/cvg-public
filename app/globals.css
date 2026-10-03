@@ -43,3 +43,12 @@ a { color: inherit; }
 .fact { display: flex; justify-content: space-between; padding: 13px 18px; border-bottom: 1px solid var(--haze); }
 .fact:last-child { border-bottom: none; }
 .foot { margin-top: auto; padding-top: 32px; font-size: 13px; color: var(--slate); text-align: center; }
+
+.fixture { display: flex; flex-direction: column; gap: 6px; background: #fff; border: 1px solid var(--mist); border-left: 3px solid var(--orange); border-radius: 6px; padding: 18px; }
+.fixture-vs { font: 800 22px/1.15 var(--font); }
+.result { display: flex; align-items: center; gap: 14px; padding: 13px 18px; border-bottom: 1px solid var(--haze); }
+.result:last-child { border-bottom: none; }
+.outcome { display: inline-flex; width: 26px; height: 26px; border-radius: 4px; align-items: center; justify-content: center; font: 800 12px var(--font); color: #fff; flex-shrink: 0; }
+.outcome-W { background: var(--good); }
+.outcome-D { background: var(--slate); }
+.outcome-L { background: var(--alert); }
