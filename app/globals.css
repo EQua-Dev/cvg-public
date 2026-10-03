@@ -52,3 +52,17 @@ a { color: inherit; }
 .outcome-W { background: var(--good); }
 .outcome-D { background: var(--slate); }
 .outcome-L { background: var(--alert); }
+
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.fut { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px 12px; border-radius: 12px 12px 8px 8px; clip-path: polygon(10% 0, 90% 0, 100% 7%, 100% 100%, 0 100%, 0 7%); color: #1e1a0e; }
+.fut-BRONZE { background: linear-gradient(135deg, #8d6449, #5e4232); color: #f6e9dd; }
+.fut-SILVER { background: linear-gradient(135deg, #c3c9cb, #7f898d); color: #15201b; }
+.fut-GOLD { background: linear-gradient(135deg, #d9bc6e, #9c7b33); }
+.fut-ELITE { background: linear-gradient(135deg, #1f4034, #0e1a16); color: #f4f5ef; border-top: 4px solid var(--orange); }
+.fut-top { align-self: stretch; display: flex; align-items: baseline; gap: 8px; }
+.fut-ovr { font: 700 30px/1 var(--mono); }
+.fut-pos { font: 800 14px var(--font); }
+.fut-photo { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; background: rgba(0, 0, 0, 0.15); display: block; }
+.fut-name { font: 900 15px var(--font); text-transform: uppercase; text-align: center; }
+.fut-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; font: 600 11px var(--font); letter-spacing: 0.03em; }
+.fut-stats b { font: 700 14px var(--mono); }

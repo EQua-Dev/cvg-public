@@ -3,6 +3,7 @@
 interface Fixture { date: string; time: string; opponent: string; venue: string; side: "HOME" | "AWAY" | "NEUTRAL"; type: string }
 interface Result { date: string; opponent: string; side: string; ourScore: number; theirScore: number; scorers: string[]; potm: string[] }
 interface Matches { next?: Fixture; results: Result[] }
+interface PublicCard { name: string; position?: string; ovr: number; tier: "BRONZE" | "SILVER" | "GOLD" | "ELITE"; stats: { label: string; value: number }[]; photoUrl?: string; round: string }
 
 const API_URL = process.env.CVG_API_URL ?? "http://localhost:8080";
 
@@ -18,6 +19,15 @@ async function matches(): Promise<Matches> {
   }
 }
 
+async function squad(): Promise<PublicCard[]> {
+  try {
+    const res = await fetch(`${API_URL}/api/public/squad`, { cache: "no-store" });
+    return res.ok ? await res.json() : [];
+  } catch {
+    return [];
+  }
+}
+
 function day(iso: string) {
   return new Date(iso + "T00:00:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" }).toUpperCase().replace(",", "");
 }
@@ -28,7 +38,7 @@ function clock(t: string) {
 }
 
 export default async function Home() {
-  const { next, results } = await matches();
+  const [{ next, results }, cards] = await Promise.all([matches(), squad()]);
   return (
     <main style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <span className="label">Abuja</span>
@@ -68,6 +78,28 @@ export default async function Home() {
                 </div>
               );
             })}
+          </div>
+        </section>
+      )}
+
+      {cards.length > 0 && (
+        <section style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <span className="label">The squad · {cards[0].round}</span>
+          <div className="cards">
+            {cards.map((c, i) => (
+              <div key={i} className={`fut fut-${c.tier}`}>
+                <div className="fut-top">
+                  <span className="fut-ovr">{c.ovr}</span>
+                  <span className="fut-pos">{c.position}</span>
+                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                {c.photoUrl ? <img className="fut-photo" src={c.photoUrl} alt="" /> : <span className="fut-photo" />}
+                <strong className="fut-name">{c.name}</strong>
+                <div className="fut-stats">
+                  {c.stats.map((s) => <span key={s.label}><b>{s.value}</b> {s.label}</span>)}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       )}
